@@ -5,11 +5,17 @@ Description: Dette er et tema til vores 3. semester eksamensprojekt.
 Version: 1.0
 */
 
+* {
+    box-sizing: border-box;
+}
+
+
 body {
     margin: 0;
     padding: 0;
-    background-color: #f8f8f8;
+    overflow-x: hidden; /* Sørg for at fjerne uønsket rulning */
 }
+
 
 .site-header {
     width: 100%;
@@ -145,48 +151,57 @@ body {
 }
 
 @media (max-width: 768px) {
-    .top-bar .container, .bottom-bar .container {
-        flex-direction: column;
-    }
-
-    .language-switcher, .contact-info {
-        margin-bottom: 10px;
-        flex-direction: row;
-    }
-
-    .main-menu {
-        display: flex;
-        justify-content: center; /* Centrerer menuen horisontalt */
-        align-items: center; /* Centrerer elementer vertikalt */
-    }
-
+    /* Menuen skal forblive horisontal */
     .main-menu ul {
         display: flex;
-        flex-direction: row; /* Ændrer til rækkefølge i stedet for kolonne */
-        align-items: center; /* Centrerer menu items vertikalt */
-        gap: 10px; /* Afstand mellem menupunkterne */
-        margin: 0; /* Fjerner standard margin */
-        padding: 0; /* Fjerner standard padding */
+        flex-wrap: wrap; /* Tillader elementerne at bryde til flere linjer */
+        justify-content: flex-start; /* Starter menuen fra venstre */
+        padding: 0;
+        margin: 0;
     }
 
     .main-menu ul li {
-        list-style-type: none; /* Fjerner punkttegn */
+        width: 25%; /* Sørger for at der er plads til 3 menupunkter pr. linje */
+        text-align: center;
+        margin-bottom: -10px;
     }
 
     .main-menu ul li a {
         font-size: 14px;
-        text-decoration: none; /* Sørger for at links ikke har understregning */
-        color: #000; /* Sæt din ønskede farve */
+        text-decoration: none;
+        color: #333;
+        display: block; /* Gør links klikbare som blokke */
+        background-color: transparent;
     }
 
     .main-menu ul li a:hover {
-        text-decoration: underline; /* Tilføjer hover-effekt */
+        color: #fff;
+        background-color: #20059A; /* Hover-effekt */
     }
 
-    .site-logo {
-        margin-bottom: 15px;
+    /* Ikonerne placeres under menuen på en ny linje */
+    .main-menu a img {
+        display: block; /* Gør ikonet til blok-element */
+        width: 24px; /* Størrelse på ikonet */
+        height: auto;
+        margin: 10px auto; /* Afstand rundt om ikonet og centrerer det */
+    }
+
+    .site-logo img {
+        max-width: 180px;
+        margin-bottom: 20px;
+    }
+
+    /* Justering af containerne for at holde dem centreret på små skærme */
+    .top-bar .container,
+    .bottom-bar .container {
+        flex-direction: column; /* Gør begge containere vertikale */
+        align-items: center;
     }
 }
+
+
+
 
 
 
@@ -284,8 +299,8 @@ body {
         left: 50%;
         transform: translate(-50%, -50%); 
         width: 80%;
-        text-align: center;
         padding-left: 0; 
+        text-align: left;
     }
 
     .hero-home-content h1 {
@@ -300,6 +315,7 @@ body {
     .hero-home-content .btn {
         font-size: 16px; 
         padding: 8px 16px; 
+        margin: 0 auto;
     }
 }
 
@@ -492,8 +508,12 @@ body {
     }
 
     .partner-image {
-        width: 48%; 
-        margin-bottom: 20px; 
+        width: 25%; 
+        height: auto;
+    }
+
+    .partners-title {
+        text-align: center;
     }
 }
 
@@ -622,13 +642,15 @@ body {
     }
 
     .white-column {
-        width: 100%; /* Sørg for at den hvide kolonne fylder hele bredden */
+        width: 80%; /* Sørg for at den hvide kolonne fylder hele bredden */
+        margin: 0 auto;
+        text-align: left;
     }
 
     .column p {
         margin-left: 0;  /* Fjern venstre-margin, så teksten justeres korrekt på små skærme */
         margin-right: 0; /* Fjern højre-margin for bedre justering */
-        text-align: center;
+        text-align: left;
     }
 }
 
@@ -637,7 +659,7 @@ body {
 /* Vaskehal image */
 
 .vaskehal-image {
-    width: 100%;
+    width: 100%; /* Sørger for at containeren fylder hele bredden */
     height: auto;
     overflow: hidden;
     display: block;
@@ -646,25 +668,29 @@ body {
     object-position: center; /* Sørger for, at billedet er centreret */
 }
 
-
 .vaskehal-image img {
     width: 100%;
-    height: auto; /* Skaler billedet responsivt */
+    height: 100%; /* Sætter højden på billedet til at fylde hele containeren */
     object-fit: cover; /* Sørger for at billedet fylder containeren uden at blive forvrænget */
+    object-position: center; /* Sørger for at billedet er centreret */
 }
 
-
+/* Media query for små skærme */
 @media (max-width: 768px) {
     .vaskehal-image {
-        height: auto; /* Gør billedet fylder 50% af viewport højden */
-        width: 100%;
-        margin-top: -30px;
+        height: 30vh; /* Sørger for, at billedet fylder 50% af viewport højden (kan justeres) */
+        width: 100vw; /* Fylder hele bredden af skærmen */
+        margin-top: 0; /* Fjerner margin-top, hvis der er behov for at justere */
     }
 
     .vaskehal-image img {
-        object-position: center top; /* Sørger for, at billedet skaleres fra toppen på små skærme */
+        height: 100%; /* Sørger for, at billedet fylder hele containerens højde */
+        width: 100%; /* Sørger for, at billedet fylder hele containerens bredde */
+        object-fit: cover; /* Sørger for at billedet dækker containeren uden at blive forvrænget */
+        object-position: center; /* Centrerer billedet i containeren */
     }
 }
+
 
 
 /* End row */
@@ -697,6 +723,21 @@ body {
     font-family: "kumbh Sans", sans-serif !important;
     font-weight: 400;
 }
+
+
+@media (max-width: 768px) {
+.end-column h2 {
+    font-size: 25px;
+    width: 80%;
+}
+
+.end-column {
+    text-align: left; /* Venstrejusterer både titel og tekst */
+    margin-top: 20px;
+    margin-left: 2rem;
+}
+}
+
 
 
 
@@ -823,13 +864,14 @@ body {
     }
 
     .row-losning .white-column {
-        width: 100%; /* Sørg for at den hvide kolonne fylder hele bredden */
+        width: 80%; /* Sørg for at den hvide kolonne fylder hele bredden */
+        margin: 0 auto;
     }
 
     .row-losning .column p {
         margin-left: 0;  /* Fjern venstre-margin, så teksten justeres korrekt på små skærme */
         margin-right: 0; /* Fjern højre-margin for bedre justering */
-        text-align: center;
+        text-align: left;
     }
 }
 
@@ -889,17 +931,29 @@ body {
         gap: 20px;
     }
 
+    .info-row {
+        padding:  0;
+        margin-bottom: 50px;
+    }
+
     .info-images {
         width: 100%;
-        flex-direction: row;
-        justify-content: space-between;
+        flex-direction: column; /* Ændrer til kolonne for at få billederne under hinanden */
+        gap: 20px; /* Tilføjer afstand mellem billederne */
+        align-items: center; /* Centrerer billederne horisontalt */
+    }
+
+    .info-image {
+        width: 100%; /* Sørger for at billederne fylder 100% af containerens bredde */
+        height: auto;
+        object-fit: cover;
+        display: block; /* Gør billederne til blok-elementer */
     }
 
     .info-losning-text {
         width: 90%;
         text-align: center;
         margin: 0 auto;
-
     }
 
     .info-item h3 {
@@ -910,6 +964,7 @@ body {
         font-size: 14px;
     }
 }
+
 
 
 
@@ -1105,6 +1160,23 @@ body {
         align-items: center; /* Centrer kolonnerne horisontalt */
     }
 
+        .contact-column input[type="text"],
+    .contact-column input[type="email"],
+    .contact-column input[type="tel"] {
+        width: 100%;
+    }
+
+    .contact-column textarea {
+        width: 100%;
+        height: 200px;
+    }
+
+
+    .contact-column input[type="submit"] {
+        width: 100px;
+    }
+
+
     .contact-column, .info-column {
         width: 100%; /* Brug 100% bredde for at undgå overflow */
         margin-bottom: 20px;
@@ -1116,22 +1188,22 @@ body {
     .contact-column {
         display: flex;
         justify-content: center; /* Centrer formularen horisontalt */
-        padding: 0 20px; /* Giv lidt luft på siderne */
         width: 100%; /* Brug hele bredden */
         margin: 0; /* Fjern margin for at centrere */
     }
 
     /* Juster formularens max-bredde for at gøre den mindre og centrere den */
     .contact-column form {
-        width: 100%;
+        width:70%;
         max-width: 600px; /* Angiv en maksimal bredde for at undgå at formularen bliver for bred */
-        margin-left: 3rem;
+        margin: 0 auto;
+        margin-top: 30px;
     }
 
     .contact-column h2 {
         font-size: 28px; /* Mindre overskriftsstørrelse */
-        margin-top: 40px; /* Lidt mere luft over overskriften */
-        margin-left: 3rem;
+        margin: 0 auto;
+        margin-top: 50px;
     }
 
     /* Info-kolonnen */
@@ -1464,6 +1536,7 @@ body {
     }
 
     .footer-nav .footer-menu li a {
+        text-align: center;
         font-size: 14px; /* Mindre tekststørrelse for links */
     }
 }
