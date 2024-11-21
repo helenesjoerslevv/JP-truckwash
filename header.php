@@ -42,9 +42,7 @@
             <!-- Menu til højre -->
             <nav class="main-menu">
                 <?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
-                <a href="https://www.facebook.com/profile.php?id=61568371990796">
-                <img src="<?php echo get_template_directory_uri(); ?>/img/facebook.png" alt="Facebook Icon">
-                </a></nav>
+            </nav>
     </div>
 </header>
 

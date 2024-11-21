@@ -138,18 +138,6 @@ body {
     background-color: #20059A; 
 }
 
-
-.main-menu a img {
-    width: 24px; /* Justér størrelsen på ikonet efter behov */
-    height: auto;
-    margin-left: 20px; /* Skaber lidt afstand mellem menuen og ikonet */
-    transition: transform 0.3s ease-in-out; /* Tilføjer en hover-animation */
-}
-
-.main-menu a img:hover {
-    transform: scale(1.1); /* Forstørrelse ved hover */
-}
-
 @media (max-width: 768px) {
     /* Menuen skal forblive horisontal */
     .main-menu ul {
@@ -161,9 +149,9 @@ body {
     }
 
     .main-menu ul li {
-        width: 25%; /* Sørger for at der er plads til 3 menupunkter pr. linje */
+        width: 15%; /* Sørger for at der er plads til 3 menupunkter pr. linje */
         text-align: center;
-        margin-bottom: -10px;
+        margin-top: 10px;
     }
 
     .main-menu ul li a {
@@ -177,19 +165,6 @@ body {
     .main-menu ul li a:hover {
         color: #fff;
         background-color: #20059A; /* Hover-effekt */
-    }
-
-    /* Ikonerne placeres under menuen på en ny linje */
-    .main-menu a img {
-        display: block; /* Gør ikonet til blok-element */
-        width: 24px; /* Størrelse på ikonet */
-        height: auto;
-        margin: 10px auto; /* Afstand rundt om ikonet og centrerer det */
-    }
-
-    .site-logo img {
-        max-width: 180px;
-        margin-bottom: 20px;
     }
 
     /* Justering af containerne for at holde dem centreret på små skærme */
@@ -1505,6 +1480,19 @@ body {
     background-color: #20059A; 
     color: #ffffff; 
 }
+
+.footer-nav a img {
+    width: 24px; /* Justér størrelsen på ikonet efter behov */
+    height: auto;
+    transition: transform 0.3s ease-in-out; /* Tilføjer en hover-animation */
+    margin-top: 10px;
+}
+
+.footer-nav a img:hover {
+    transform: scale(1.1); /* Forstørrelse ved hover */
+}
+
+
 
 @media (max-width: 768px) {
     #footer {

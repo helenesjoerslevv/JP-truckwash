@@ -25,6 +25,9 @@
                         'menu_class' => 'footer-menu' 
                     ) );
                 ?>
+                <a href="https://www.facebook.com/profile.php?id=61568371990796">
+                <img src="<?php echo get_template_directory_uri(); ?>/img/facebook_white.png" alt="Facebook Icon">
+                </a>
             </div>
         </div>
     </div>
